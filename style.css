@@ -1,0 +1,199 @@
+/*
+Para agregar:
+
+- Al botón de agregar que se ponga una flecha hacia la izquiera al hacer hover.
+
+
+*/
+
+@import url('http://fonts.cdnfonts.com/css/sofia-pro');
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-main: #41bbfe;
+    --color-contrast: #ff7751;
+    --color-bg: #2a2d32;
+    --color-bg-darker: #212429;
+    --body-padding: 60px;
+}
+
+body {
+    font-family: 'Sofia Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--color-bg-darker);
+    color: var(--color-main);
+}
+
+nav {
+    height: 20vh;
+    width: 100%;
+    background-color: var(--color-bg-darker);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px var(--body-padding);
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+.encabezado h5 {
+    color: white;
+    font-weight: 400;
+}
+
+.navbar-links {
+    display: flex;
+}
+
+.navbar-links ul {
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.2s ease-in-out all;
+}
+
+.navbar-links ul:hover {
+    background-color: var(--color-main);
+    color: var(--color-bg-darker);
+}
+
+.navbar-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contenedor {
+    min-height: 80vh;
+    display: flex;
+}
+
+.todo-container {
+    width: 50vw;
+    padding: 20px calc(var(--body-padding)/2) 20px var(--body-padding);
+}
+
+.todo-archivo {
+    width: 50vw;
+    background-color: var(--color-bg);
+    border-top-left-radius: 20px;
+    padding: 20px var(--body-padding) 20px calc(var(--body-padding)/2);
+}
+
+form {
+    height: 48px;
+    display: flex;
+    margin-top: 10px;
+}
+
+form input,
+form button {
+    border: none;
+    padding: 0px 20px;
+}
+
+form input {
+    flex-grow: 1;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+form input:focus {
+    outline: none !important;
+    border: 2px solid var(--color-contrast);
+    border-right: none;
+}
+
+form button {
+    background-color: var(--color-contrast);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+form button:hover {
+    background-color: var(--color-bg);
+    color: var(--color-contrast);
+    cursor: pointer;
+}
+
+.todo-tareas {
+    display: flex;
+}
+
+.todo-list {
+    width: 100%;
+    min-width: 30%;
+    list-style: none;
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: var(--color-bg);
+    transition: all 0.5s ease;
+}
+
+.todo:hover {
+    margin-left: 20px
+}
+
+.item-archivado {
+    list-style: none;
+    background-color: var(--color-bg-darker);
+}
+
+.todo li {
+    flex: 1;
+}
+
+.delete-btn,
+.complete-btn {
+    background-color: var(--color-main);
+    color: var(--color-bg-darker);
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.complete-btn {
+    background-color: white;
+}
+
+.delete-btn {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--color-contrast);
+    color: white;
+}
+
+.delete-btn:hover,
+.complete-btn:hover {
+    background-color: var(--color-bg);
+    color: var(--color-contrast);
+}
+
+.fa-trash,
+.fa-check {
+    pointer-events: none;
+}
+
+.delete-item {
+    transform: translateX(-40px);
+    opacity: 0;
+}
