@@ -71,7 +71,9 @@ function botonesItem(e) {
         todoArchivados.appendChild(parent);
         //borro de la lista de tareas
         removeLocalTodos(parent);
-
+        //agregar a la lista de archivados
+        saveLocalArchive(parent.children[0].innerText);
+        console.log(parent.children[0].innerText);
     }
 
 }
@@ -103,8 +105,10 @@ function recuperarItem(e) {
         todoList.appendChild(parent);
 
         //sacar de la lista de archivados
+        removeLocalArchive(parent);
 
-
+        //agregar a la lista de tareas
+        saveLocal(parent.children[0].innerText);
     }
 
 }
@@ -198,6 +202,42 @@ function removeLocalTodos(todo) {
 
 }
 
+//Guarda localmente la nueva tarea agregada
+function saveLocalArchive(todo) {
+    //buscar las tareas guardadas
+    let todosArchive = getLocalDataArchive();
+    //agregar nuevo item
+    todosArchive.push(todo);
+    //guardar en local
+    localStorage.setItem("archive", JSON.stringify(todosArchive));
+}
+
+//recupera la información guardada localmente de los archivados 
+function getLocalDataArchive() {
+    let todosArchive;
+    //chequear si tengo datos
+    if (localStorage.getItem("archive") === null) {
+        //Creo un array vacio
+        return todosArchive = []
+    } else {
+        //recupero lo guardado
+        return todosArchive = JSON.parse(localStorage.getItem("archive"));
+    }
+
+}
+
+//Borra la tarea de la lista de archivos
+function removeLocalArchive(todo) {
+
+    let todosArchive = getLocalDataArchive();
+    //En que index esta el item a borrar
+    const todoText = todo.children[0].innerText;
+    //sacar del array el item eliminado
+    todosArchive.splice(todosArchive.indexOf(todoText), 1);
+    //guardar en local el nuevo array
+    localStorage.setItem("archive", JSON.stringify(todosArchive));
+
+}
 
 
 
