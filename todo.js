@@ -146,6 +146,12 @@ function getTodos() {
         createNewTodo(todo);
 
     });
+    let todosArchive = getLocalDataArchive();
+    //iterar entre todos los elementos
+    todosArchive.forEach(function(todo) {
+        createNewTodoArchive(todo);
+
+    });
 }
 
 
@@ -176,6 +182,32 @@ function createNewTodo(inputText) {
 
     //agregarmos el bloque contenedor a la lista
     todoList.appendChild(todoDiv);
+}
+
+//Crea la estructura de la nueva tarea archivada
+function createNewTodoArchive(inputText) {
+    //crear el div contenedor
+    const todoDiv = document.createElement("div");
+    //agregamos la clase contenedora de la tarea
+    todoDiv.classList.add("todo");
+    //agregamos la clase contenedora de la tarea
+    todoDiv.classList.add("item-archivado");
+    //crear la lista interna
+    const newTodo = document.createElement("li");
+    newTodo.innerText = inputText;
+    //agregamos la clase al item de la tarea
+    newTodo.classList.add("todo-item");
+    //Crear botón de borrar
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = `<i class="fas fa-trash"></i>`;
+    deleteButton.classList.add("delete-btn");
+
+    //Agregamos el item y los botones al contenedor
+    todoDiv.appendChild(newTodo);
+    todoDiv.appendChild(deleteButton);
+
+    //agregarmos el bloque contenedor a la lista
+    todoArchivados.appendChild(todoDiv);
 }
 
 //recupera las tareas archivadas localmente
